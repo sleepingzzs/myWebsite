@@ -17,7 +17,6 @@ export default function Explore() {
 		});
 		return posts;
 	};
-	console.log(allPosts);
 	useEffect(() => {
 		getPosts();
 	}, []);

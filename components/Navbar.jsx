@@ -23,7 +23,7 @@ export default function Nav() {
 							: "px-2 hover:bg-[#fff] hover:text-black  duration-300 ease-in-out rounded-md"
 					}
 				>
-					<Link href='repos'>Repos</Link>
+					<Link href='/repos'>Repos</Link>
 				</li>
 				<li
 					className={
@@ -32,7 +32,7 @@ export default function Nav() {
 							: "px-2 hover:bg-[#fff] hover:text-black  duration-300 ease-in-out rounded-md"
 					}
 				>
-					<Link href='pics'>Pics</Link>
+					<Link href='/pics'>Pics</Link>
 				</li>
 			</ul>
 		</nav>
