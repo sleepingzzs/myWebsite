@@ -10,6 +10,16 @@ export default function Card({
 	language,
 	push,
 }) {
+	let last = Math.floor((Date.now() - push) / 86400000);
+	if (last < 1) {
+		last = "today";
+	} else if (last < 30) {
+		last = last + " days ago";
+	} else if (last < 365) {
+		last = Math.floor(last / 30) + " months ago";
+	} else last = Math.floor(last / 365) + " years ago";
+	if (last.startsWith("1")) last = last.replace("s", "");
+
 	return (
 		<Link href={url}>
 			<div className='flex flex-col bg-white bg-opacity-10 gap-2 w-[500px] p-2 rounded-md hover:bg-opacity-20	h-[125px] justify-between'>
@@ -30,7 +40,7 @@ export default function Card({
 					<li className='flex flex-row gap-2'>
 						<FaCode className='text-[16px]'></FaCode> {language}
 					</li>
-					<li>Last updated {push}</li>
+					<li>Last updated {last}</li>
 				</ul>
 			</div>
 		</Link>

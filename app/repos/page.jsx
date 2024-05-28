@@ -7,6 +7,7 @@ export default function Repos() {
 	const [allRepos, setAllRepos] = useState([]);
 	const getPosts = async () => {
 		setAllRepos(await repos);
+		console.log(await repos);
 	};
 
 	useEffect(() => {
