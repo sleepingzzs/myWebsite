@@ -41,10 +41,10 @@ export default function Home() {
 	}, []);
 	const age = Math.floor((Date.now() - 1202182200000) / 86400000 / 365);
 	return (
-		<div className='flex flex-col  justify-between pt-10'>
+		<div className='flex flex-col justify-between pt-10'>
 			<div className='flex justify-center items-center flex-row medium:flex-col gap-10 pb-10'>
 				<Image
-					className='rounded-full w-[300px] h-[300px] object-cover'
+					className='rounded-full w-[300px] h-[300px] object-cover ms:w-[250px] ms:h-[250px]'
 					width={200}
 					height={200}
 					src={require("@/icons/icon.png")}
