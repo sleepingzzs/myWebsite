@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
 		<html lang='en'>
 			<body className={font.className}>
 				<Nav />
-				<main className='max-w-5xl mx-auto tab:mx-2'>{children}</main>
+				<main className='max-w-5xl mx-auto large:mx-5'>{children}</main>
 			</body>
 		</html>
 	);

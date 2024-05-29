@@ -4,11 +4,11 @@ import Link from "next/link";
 export default function Card({ caption, pic, timestamp, id }) {
 	return (
 		<Link href='/pics'>
-			<div className='flex flex-row bg-white bg-opacity-10 gap-2 w-[500px] p-2 rounded-md hover:bg-opacity-20	'>
+			<div className='flex flex-row bg-white bg-opacity-10 gap-2 h-[100px] p-2 rounded-md hover:bg-opacity-20'>
 				<Image
-					className='rounded-md w-[80px] h-[80px] object-cover'
-					width={200}
-					height={200}
+					className='rounded-md  object-cover'
+					width={90}
+					height={90}
 					src={pic}
 					alt='Could not load image'
 					priority

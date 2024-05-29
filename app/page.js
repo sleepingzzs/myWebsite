@@ -1,15 +1,27 @@
 "use client";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import { FaGithub, FaInstagram, FaSpotify, FaSteam } from "react-icons/fa";
+import {
+	FaGithub,
+	FaInstagram,
+	FaSpotify,
+	FaSteam,
+	FaDiscord,
+} from "react-icons/fa";
 import Link from "next/link";
 import { db } from "@/utils/firebase";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Pic from "@/components/PicCard";
+import Repo from "@/components/RepoCard";
+import { repos } from "@/utils/github";
 
 export default function Home() {
 	const [allPics, setAllPics] = useState([]);
+	const [allRepos, setAllRepos] = useState([]);
+	const getRepos = async () => {
+		setAllRepos((await repos).slice(0, 3));
+	};
 
 	const getPics = async () => {
 		const colref = collection(db, "pics");
@@ -25,11 +37,12 @@ export default function Home() {
 	};
 	useEffect(() => {
 		getPics();
+		getRepos();
 	}, []);
-
+	const age = Math.floor((Date.now() - 1202182200000) / 86400000 / 365);
 	return (
-		<div className='flex flex-col items-center justify-between pt-10'>
-			<div className='flex justify-center items-center xl:flex-row flex-col gap-10 pb-10'>
+		<div className='flex flex-col  justify-between pt-10'>
+			<div className='flex justify-center items-center flex-row medium:flex-col gap-10 pb-10'>
 				<Image
 					className='rounded-full w-[300px] h-[300px] object-cover'
 					width={200}
@@ -57,15 +70,15 @@ export default function Home() {
 						/>
 					</h1>
 					<p className='leading-8'>
-						I'm a 16 year old guy who's interested in 'techie'
-						stuff. For now, web-dev is just my hobby and I plan on
-						pursuing data science as a career option in the future.
-						Besides the techie stuff, I like staying at home and
-						play videogames with occasionally hanging out with the
-						homies. Oh! I almost forgot to mention - I use linux
+						I'm a {age} year old geek who likes modern technology. I
+						do web-dev for fun but also interested in AI/ML. Besides
+						the techie stuff, I like to spend my time playing
+						videogames, listening to music, reading webtoons,
+						watching anime... yada yada and hanging out with
+						friends. Oh! I almost forgot to mention - I use linux
 						BTW.
-					</p>{" "}
-					<div className='py-2 flex justify-center xl:justify-start items-center'>
+					</p>
+					<div className='py-2 flex medium:justify-center justify-start items-center'>
 						<ul className='flex flex-row text-[36px] gap-4'>
 							<Link href='https://github.com/sleepingzzs'>
 								<li className='flex flex-row gap-2 rounded-md bg-white p-1 opacity-60 hover:opacity-100'>
@@ -77,9 +90,9 @@ export default function Home() {
 									<FaSpotify className='fill-black' />
 								</li>
 							</Link>
-							<Link href='https://instagram.com/abismxr'>
+							<Link href='https://discord.com/users/739438952775286926'>
 								<li className='flex flex-row gap-2 rounded-md bg-white p-1 opacity-60 hover:opacity-100'>
-									<FaInstagram className='fill-black' />
+									<FaDiscord className='fill-black' />
 								</li>
 							</Link>
 							<Link href='https://steamcommunity.com/profiles/76561199105868897/'>
@@ -91,11 +104,17 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<div className='grid grid-cols-1 gap-10 mx-auto my-5 sm:grid-cols-2 sm:max-w-2xl lg:grid-cols-3 lg:max-w-5xl'>
+			<div className='grid grid-cols-2 gap-5 mt-5 ms:grid-cols-1'>
 				<div className='flex flex-col gap-2'>
 					<h1 className='text-[28px]'># Recent pics</h1>
 					{allPics.map((post) => (
 						<Pic key={post.id} {...post}></Pic>
+					))}
+				</div>
+				<div className='flex flex-col gap-2'>
+					<h1 className='text-[28px]'># Recent repos</h1>
+					{allRepos.map((repo) => (
+						<Repo key={repo.name} {...repo}></Repo>
 					))}
 				</div>
 			</div>
