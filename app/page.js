@@ -55,9 +55,8 @@ export default function Home() {
 					<h1 className='text-[28px] font-semibold'>
 						<TypeAnimation
 							sequence={[
-								// Same substring at the start will only be typed out once, initially
 								"Hey! I'm Abismar!",
-								3000, // wait 1s before replacing "Mice" with "Hamsters"
+								3000,
 								"Hey! I'm sleepingzzs!",
 								3000,
 								"Hey! I'm bizi!",
@@ -69,15 +68,17 @@ export default function Home() {
 							repeat={Infinity}
 						/>
 					</h1>
-					<p className='leading-8'>
-						I'm a {age} year old geek who likes modern technology. I
-						do web-dev for fun but also interested in AI/ML. Besides
-						the techie stuff, I like to spend my time playing
-						videogames, listening to music, reading webtoons,
-						watching anime... yada yada and hanging out with
-						friends. Oh! I almost forgot to mention - I use linux
-						BTW.
-					</p>
+					<div className='leading-8 flex flex-col gap-2'>
+						<p>
+							I'm a {age} year old who hates academics but a
+							sucker for Computer Science. I've been making
+							personal websites and bots as a small hobby for a
+							few years. Besides the techie stuff, I mostly spend
+							my hours in various games, music, anime, webtoons,
+							etc.
+						</p>
+						<p>I use linux BTW-</p>
+					</div>
 					<div className='py-2 flex medium:justify-center justify-start items-center'>
 						<ul className='flex flex-row text-[36px] gap-4'>
 							<Link href='https://github.com/sleepingzzs'>
