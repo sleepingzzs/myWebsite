@@ -54,17 +54,17 @@ export default function Nav() {
 					</li>
 					<li
 						className={
-							path === "/pics"
+							path === "/gallery"
 								? "px-2 bg-white text-black rounded-md"
 								: "px-2 hover:bg-[#fff] hover:text-black  duration-300 ease-in-out rounded-md"
 						}
 					>
-						<Link href='/pics'>Pics</Link>
+						<Link href='/gallery'>Gallery</Link>
 					</li>
 				</ul>
 			</div>
 			{showMenu && (
-				<div className='absolute left-1 right-1 py-2 mx-auto bg-black bg-opacity-80 text-white my-2 text-[24px] flex justify-center border-b-2'>
+				<div className='absolute z-10 left-1 right-1 py-2 mx-auto bg-black bg-opacity-80 text-white my-2 text-[24px] flex justify-center border-b-2'>
 					<div className='flex flex-col gap-5'>
 						<Link href='/'>
 							<button
@@ -84,13 +84,13 @@ export default function Nav() {
 								Repos
 							</button>
 						</Link>
-						<Link href='/pics'>
+						<Link href='/gallery'>
 							<button
 								onClick={() => {
 									setShowMenu((a) => !a);
 								}}
 							>
-								Pics
+								Gallery
 							</button>
 						</Link>
 					</div>

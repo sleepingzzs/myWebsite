@@ -21,7 +21,7 @@ export default function Explore() {
 		getPosts();
 	}, []);
 	return (
-		<div className='grid grid-cols-1 gap-10 mx-auto my-5 sm:grid-cols-2 sm:max-w-2xl lg:grid-cols-3 lg:max-w-5xl'>
+		<div className='grid grid-cols-1 gap-5 mx-auto my-5 sm:grid-cols-2 sm:max-w-2xl lg:grid-cols-3 lg:max-w-5xl'>
 			{allPosts.map((post) => (
 				<Post key={post.id} {...post}></Post>
 			))}
