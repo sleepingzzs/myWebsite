@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaEye } from "react-icons/fa";
 export default function Pic({ caption, pic, timestamp, id }) {
 	const [showCaption, setShowCaption] = useState(false);
 	let last = Math.floor((Date.now() - timestamp) / 86400000);
@@ -26,18 +27,19 @@ export default function Pic({ caption, pic, timestamp, id }) {
 					>
 						<BsThreeDotsVertical className='text-[22px]'></BsThreeDotsVertical>
 					</button>
-
-					{/* <li>
-						<FaRegHeart className='text-[16px]' />
-					</li>
-					<li>
-						<FaRegComment className='text-[16px]' />
-					</li> */}
 				</div>
-				<div>
+				<div className='relative'>
 					{showCaption && (
-						<div className='absolute left-2 right-2 min-h-[100px] bg-black bg-opacity-80 text-white border-b-2 rounded-t-md'>
-							<p className='leading-8 mx-2'> {caption}</p>
+						<div className='absolute bottom-0 right-0 left-0 min-h-[100px] bg-black bg-opacity-80 text-white border-t-2 rounded-b-md'>
+							<p className='text-[14px] leading-6 mx-2'>
+								{caption}
+							</p>
+						</div>
+					)}
+					{!showCaption && (
+						<div className='absolute hidden hover:flex flex-row hover:visible'>
+							<FaEye className='text-[24px]'></FaEye>
+							<div>1000</div>
 						</div>
 					)}
 					<Image

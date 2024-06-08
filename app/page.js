@@ -1,13 +1,7 @@
 "use client";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import {
-	FaGithub,
-	FaInstagram,
-	FaSpotify,
-	FaSteam,
-	FaDiscord,
-} from "react-icons/fa";
+import { FaGithub, FaSpotify, FaSteam, FaDiscord } from "react-icons/fa";
 import Link from "next/link";
 import { db } from "@/utils/firebase";
 import { useEffect, useState } from "react";
@@ -47,7 +41,7 @@ export default function Home() {
 					className='rounded-full w-[300px] h-[300px] object-cover ms:w-[250px] ms:h-[250px]'
 					width={200}
 					height={200}
-					src={require("@/icons/icon.png")}
+					src={require("@/public/icon.png")}
 					alt='Could not load image'
 					priority
 				></Image>

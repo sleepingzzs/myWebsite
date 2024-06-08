@@ -12,7 +12,7 @@ export default function Card({ caption, pic, timestamp, id }) {
 	} else last = Math.floor(last / 365) + " years ago";
 	if (last.startsWith("1")) last = last.replace("s", "");
 	return (
-		<Link href='/pics'>
+		<Link href='/gallery'>
 			<div className='flex flex-row bg-white bg-opacity-10 gap-2 h-[100px] p-2 rounded-md hover:bg-opacity-20'>
 				<Image
 					className='rounded-md  object-cover'
