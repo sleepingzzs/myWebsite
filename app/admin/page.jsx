@@ -20,7 +20,7 @@ export default function Admin() {
 
 	//post pic
 	const submitForm = async (values) => {
-		route.push("/pics");
+		route.push("/gallery");
 		const picRef = ref(storage, `pics/${values.pic[0].name + v4()}`);
 
 		//uploading
