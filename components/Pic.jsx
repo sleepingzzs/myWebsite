@@ -30,7 +30,7 @@ export default function Pic({ caption, pic, timestamp, id }) {
 				</div>
 				<div className='relative'>
 					{showCaption && (
-						<div className='absolute bottom-0 right-0 left-0 min-h-[100px] bg-black bg-opacity-80 text-white border-t-2 rounded-b-md'>
+						<div className='absolute bottom-0 right-0 left-0 min-h-[100px] bg-black bg-opacity-80 border-t-2 rounded-b-md'>
 							<p className='text-[14px] leading-6 mx-2'>
 								{caption}
 							</p>

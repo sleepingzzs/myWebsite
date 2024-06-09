@@ -20,4 +20,5 @@ body {
 
 * {
 	padding: 1px;
+	cursor: default;
 }
