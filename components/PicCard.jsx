@@ -15,15 +15,15 @@ export default function Card({ caption, pic, timestamp, id }) {
 		<Link href='/gallery'>
 			<div className='flex flex-row bg-white bg-opacity-10 gap-2 h-[100px] p-2 rounded-md hover:bg-opacity-20'>
 				<Image
-					className='rounded-md  object-cover'
-					width={90}
-					height={90}
+					className='rounded-md aspect-square object-cover'
+					width='90'
+					height='90'
 					src={pic}
 					alt='Could not load image'
 					priority
 				></Image>
 				<div className='flex flex-col justify-between w-screen'>
-					<p>{caption}</p>
+					<p className='text-[14px] line-clamp-2'>{caption}</p>
 					<ul className='flex flex-row justify-between'>
 						<li className='text-[12px]'>views</li>
 						<li className='text-[12px]'>Posted {last}</li>

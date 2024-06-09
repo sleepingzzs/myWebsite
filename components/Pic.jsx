@@ -43,7 +43,7 @@ export default function Pic({ caption, pic, timestamp, id }) {
 						</div>
 					)}
 					<Image
-						className='rounded-md object-cover w-screen h-[100%]'
+						className='rounded-md object-cover w-screen aspect-square h-[100%]'
 						width={200}
 						height={200}
 						src={pic}
