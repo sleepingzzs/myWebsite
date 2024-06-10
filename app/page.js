@@ -8,21 +8,45 @@ import { useEffect, useState } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Pic from "@/components/PicCard";
 import Repo from "@/components/RepoCard";
-import { track } from "@/utils/music";
 import { repos } from "@/utils/github";
-import { CgLoadbarSound } from "react-icons/cg";
+
 export default function Home() {
 	const [allPics, setAllPics] = useState([]);
 	const [allRepos, setAllRepos] = useState([]);
 	const [currentTrack, setCurrentTrack] = useState([]);
 
+	//get repos
 	const getRepos = async () => {
 		setAllRepos((await repos).slice(0, 3));
 	};
+
+	//get track
 	const getTrack = async () => {
-		setCurrentTrack(await track);
+		const res = await fetch(
+			`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=sleepingzzs&api_key=${process.env.NEXT_PUBLIC_LASTFM}&format=json`
+		);
+		let data = await res.json();
+		try {
+			setCurrentTrack({
+				name: data.recenttracks.track[0].name,
+				artist: data.recenttracks.track[0].artist["#text"],
+				url: data.recenttracks.track[0].url,
+				isPlaying:
+					data.recenttracks.track[0]["@attr"].nowplaying === "true"
+						? true
+						: false,
+			});
+		} catch {
+			setCurrentTrack({
+				name: data.recenttracks.track[0].name,
+				artist: data.recenttracks.track[0].artist["#text"],
+				url: data.recenttracks.track[0].url,
+				isPlaying: false,
+			});
+		}
 	};
 
+	//get pics
 	const getPics = async () => {
 		const colref = collection(db, "pics");
 		const queue = query(colref, orderBy("timestamp", "desc"));
@@ -36,13 +60,20 @@ export default function Home() {
 	};
 	useEffect(() => {
 		getTrack();
+	}, []);
+	useEffect(() => {
 		getPics();
 		getRepos();
+		const interval = setInterval(() => {
+			getTrack();
+		}, 30000);
+
+		return () => clearInterval(interval);
 	}, []);
 
 	const age = Math.floor((Date.now() - 1202182200000) / 86400000 / 365);
 	return (
-		<div className='flex flex-col justify-between pt-10'>
+		<div className='flex flex-col justify-between py-10'>
 			<div className='flex justify-center items-center flex-row medium:flex-col gap-10 pb-10'>
 				<div className='flex flex-col relative justify-center items-center min-w-80 mx-auto ms:w-[250px] ms:h-[250px]'>
 					<Image
@@ -54,11 +85,10 @@ export default function Home() {
 						priority
 					></Image>
 					{currentTrack.isPlaying && (
-						<div className='absolute right-0 left-0 mx-auto bottom-2 text-[12px] flex flex-row justify-center rounded-md bg-white bg-opacity-10'>
-							<CgLoadbarSound className='text-[19px]' />
-							<p>
-								Listening to{" "}
-								<span className='font-semibold hover:underline'>
+						<div className='absolute right-0 left-0 bottom-2 text-[12px] mx-auto flex flex-row justify-center rounded-md bg-white bg-opacity-10'>
+							<p className='whitespace-nowrap line-clamp-1 text-ellipsis'>
+								🎶 Listening to{" "}
+								<span className='text-[12px] font-semibold hover:underline'>
 									<Link
 										href={currentTrack.url}
 										target='_blank'
