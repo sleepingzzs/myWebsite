@@ -4,7 +4,6 @@ import { useState } from "react";
 import { db, storage } from "@/utils/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection } from "firebase/firestore";
-import { v4 } from "uuid";
 import { useRouter } from "next/navigation";
 
 export default function Admin() {
@@ -20,8 +19,9 @@ export default function Admin() {
 
 	//post pic
 	const submitForm = async (values) => {
+		const ts = Date.now();
 		route.push("/gallery");
-		const picRef = ref(storage, `pics/${values.pic[0].name + v4()}`);
+		const picRef = ref(storage, `pics/${ts}`);
 
 		//uploading
 		const uploaded = await uploadBytes(picRef, values.pic[0]);
@@ -29,9 +29,10 @@ export default function Admin() {
 
 		const colref = collection(db, "pics");
 		await addDoc(colref, {
-			timestamp: Date.now(),
+			timestamp: ts,
 			caption: values.caption,
 			pic: downloadUrl,
+			views: 0,
 		});
 	};
 	const { errors } = formState;

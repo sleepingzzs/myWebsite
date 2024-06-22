@@ -2,7 +2,13 @@ import Image from "next/image";
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaEye } from "react-icons/fa";
-export default function Pic({ caption, pic, timestamp, id }) {
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+export default function Pic({ caption, pic, timestamp, views, id }) {
+	const route = useRouter();
+	function push() {
+		route.push(`/gallery/${id}`);
+	}
 	const [showCaption, setShowCaption] = useState(false);
 	let last = Math.floor((Date.now() - timestamp) / 86400000);
 	if (last < 1) {
@@ -12,13 +18,15 @@ export default function Pic({ caption, pic, timestamp, id }) {
 	} else if (last < 365) {
 		last = Math.floor(last / 30) + " months ago";
 	} else last = Math.floor(last / 365) + " years ago";
-	if (last.startsWith("1")) last = last.replace("s", "");
+	if (last.startsWith("1 ")) last = last.replace("s", "");
 	return (
 		<div className='flex flex-col mx-auto cursor-pointer '>
 			<div className='flex flex-col bg-white bg-opacity-10 rounded-md cursor-pointer'>
 				<div className='flex flex-row justify-between p-1'>
-					<div className='text-[12px] flex flex-col justify-center'>
-						{last}
+					<div className='text-[12px] flex gap-1'>
+						<div>{last}</div>
+						<div>•</div>
+						<div>{views} views</div>
 					</div>
 					<button
 						onClick={() => {
@@ -28,7 +36,7 @@ export default function Pic({ caption, pic, timestamp, id }) {
 						<BsThreeDotsVertical className='text-[22px]'></BsThreeDotsVertical>
 					</button>
 				</div>
-				<div className='relative'>
+				<div className='relative flex'>
 					{showCaption && (
 						<div className='absolute bottom-0 right-0 left-0 min-h-[100px] bg-black bg-opacity-80 border-t-2 rounded-b-md'>
 							<p className='text-[14px] leading-6 mx-2'>
@@ -42,14 +50,16 @@ export default function Pic({ caption, pic, timestamp, id }) {
 							<div>1000</div>
 						</div>
 					)}
-					<Image
-						className='rounded-md object-cover w-screen aspect-square h-[100%]'
-						width={200}
-						height={200}
-						src={pic}
-						alt='Could not load image'
-						priority
-					></Image>
+					<Link href={`gallery/${id}`}>
+						<Image
+							className='rounded-md object-cover w-screen aspect-square h-[100%]'
+							width={200}
+							height={200}
+							src={pic}
+							alt='Could not load image'
+							priority
+						></Image>
+					</Link>
 				</div>
 			</div>
 		</div>

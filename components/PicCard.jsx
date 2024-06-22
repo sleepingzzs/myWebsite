@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Card({ caption, pic, timestamp, id }) {
+export default function Card({ caption, pic, timestamp, views }) {
 	let last = Math.floor((Date.now() - timestamp) / 86400000);
 	if (last < 1) {
 		last = "today";
@@ -25,7 +25,7 @@ export default function Card({ caption, pic, timestamp, id }) {
 				<div className='flex flex-col justify-between w-screen'>
 					<p className='text-[14px] line-clamp-2'>{caption}</p>
 					<ul className='flex flex-row justify-between'>
-						<li className='text-[12px]'>views</li>
+						<li className='text-[12px]'>{views} views</li>
 						<li className='text-[12px]'>Posted {last}</li>
 					</ul>
 				</div>
