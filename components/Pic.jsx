@@ -2,17 +2,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaEye } from "react-icons/fa";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import View from "./View";
-import { db } from "@/utils/firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 
 export default function Pic({ caption, pic, timestamp, views, id }) {
 	const [showCaption, setShowCaption] = useState(false);
-	const [view, setView] = useState([]);
-	const [show, setShow] = useState(false);
-	const param = useSearchParams();
 	const router = useRouter();
 	const toggle = async () => {
 		router.push(`/gallery/?view=${id}`);

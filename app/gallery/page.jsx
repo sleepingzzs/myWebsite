@@ -18,7 +18,7 @@ export default function Explore() {
 	const [view, setView] = useState([]);
 	const [toggle, setToggle] = useState(false);
 	const router = useRouter();
-	const id = useSearchParams();
+	const id = useSearchParams().get("view");
 	const getPosts = async () => {
 		const colref = collection(db, "pics");
 		const queue = query(colref, orderBy("timestamp", "desc"));
@@ -31,7 +31,7 @@ export default function Explore() {
 	};
 	const showView = async () => {
 		try {
-			setView((await getDoc(doc(db, "pics", id.get("view")))).data());
+			setView((await getDoc(doc(db, "pics", id))).data());
 			setToggle(true);
 		} catch (err) {
 			router.push("/gallery");
@@ -43,7 +43,7 @@ export default function Explore() {
 	}, []);
 	useEffect(() => {
 		showView();
-	}, id);
+	}, [id]);
 	return (
 		<div className='grid grid-cols-1 gap-5 mx-auto my-5 sm:grid-cols-2 sm:max-w-2xl lg:grid-cols-3 lg:max-w-5xl overflow-y-hidden'>
 			{allPosts.map((post) => (

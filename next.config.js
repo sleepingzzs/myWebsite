@@ -10,7 +10,4 @@ module.exports = {
 		});
 		return config;
 	},
-	experimental: {
-		missingSuspenseWithCSRBailout: false,
-	},
 };
