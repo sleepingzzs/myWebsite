@@ -18,7 +18,7 @@ export default function Explore() {
 	const [view, setView] = useState([]);
 	const [toggle, setToggle] = useState(false);
 	const router = useRouter();
-	const id = useSearchParams().get("view");
+	const id = useSearchParams();
 	const getPosts = async () => {
 		const colref = collection(db, "pics");
 		const queue = query(colref, orderBy("timestamp", "desc"));
@@ -31,7 +31,7 @@ export default function Explore() {
 	};
 	const showView = async () => {
 		try {
-			setView((await getDoc(doc(db, "pics", id))).data());
+			setView((await getDoc(doc(db, "pics", id.get("view")))).data());
 			setToggle(true);
 		} catch (err) {
 			router.push("/gallery");
