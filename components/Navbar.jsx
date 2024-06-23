@@ -10,6 +10,10 @@ export default function Nav() {
 	const [showMenu, setShowMenu] = useState(false);
 	let path = usePathname();
 	if (path === "/") path = "/home";
+	path =
+		path.lastIndexOf("/") != 0
+			? path.substring(0, path.lastIndexOf("/"))
+			: path;
 	return (
 		<nav className='max-w-5xl mx-auto'>
 			<div className='py-5 cursor-default border-b-2'>

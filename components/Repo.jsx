@@ -22,7 +22,7 @@ export default function Card({
 
 	return (
 		<Link href={url}>
-			<div className='flex flex-col bg-white bg-opacity-10 gap-2 p-2 rounded-md hover:bg-opacity-20 h-[135px] justify-between'>
+			<div className='flex flex-col bg-white bg-opacity-10 gap-2 p-2 rounded-md hover:bg-opacity-20 h-[120px] justify-between'>
 				<div className='flex flex-col gap-2'>
 					<div className='flex flex-row gap-2'>
 						<RiGitRepositoryLine className='text-[24px]'></RiGitRepositoryLine>
@@ -30,7 +30,7 @@ export default function Card({
 							{name}
 						</h1>
 					</div>
-					<p className='text-[12px]'>{description}</p>
+					<p className='text-[12px] line-clamp-2'>{description}</p>
 				</div>
 				<ul className='flex flex-row justify-between text-[12px]'>
 					<li className='flex flex-row gap-2'>
