@@ -18,6 +18,9 @@ export default function Nav() {
 		<nav className='max-w-5xl mx-auto'>
 			<div className='py-5 cursor-default border-b-2'>
 				<ul className='flex flex-row justify-between mx-5'>
+					<li className='text-[24px] px-2 bg-white text-black rounded-md hidden small:block '>
+						{path.charAt(1).toUpperCase() + path.slice(2)}
+					</li>
 					<li>
 						<button
 							onClick={() => {
@@ -32,9 +35,6 @@ export default function Nav() {
 								<IoMdClose className='text-[38px]'></IoMdClose>
 							)}
 						</button>
-					</li>
-					<li className='text-[24px] px-2 bg-white text-black rounded-md hidden small:block '>
-						{path.charAt(1).toUpperCase() + path.slice(2)}
 					</li>
 				</ul>
 				<ul className='flex flex-row justify-center gap-20 text-[24px] small:hidden'>

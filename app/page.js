@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { FaGithub, FaSpotify, FaSteam, FaDiscord } from "react-icons/fa";
+import { SiAnilist } from "react-icons/si";
 import Link from "next/link";
 import { db } from "@/utils/firebase";
 import { useEffect, useState } from "react";
@@ -150,6 +151,11 @@ export default function Home() {
 							<Link href='https://steamcommunity.com/profiles/76561199105868897/'>
 								<li className='flex flex-row gap-2 rounded-md bg-white p-1 opacity-60 hover:opacity-100'>
 									<FaSteam className='fill-black' />
+								</li>
+							</Link>
+							<Link href='https://anilist.co/user/sleepingzzs/'>
+								<li className='flex flex-row gap-2 rounded-md bg-white p-1 opacity-60 hover:opacity-100'>
+									<SiAnilist className='fill-black'></SiAnilist>
 								</li>
 							</Link>
 						</ul>
