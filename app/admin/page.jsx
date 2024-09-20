@@ -20,20 +20,20 @@ export default function Admin() {
 	//post pic
 	const submitForm = async (values) => {
 		const ts = Date.now();
-		route.push("/gallery");
 		const picRef = ref(storage, `pics/${ts}`);
+		const colref = collection(db, "pics");
 
 		//uploading
 		const uploaded = await uploadBytes(picRef, values.pic[0]);
 		const downloadUrl = await getDownloadURL(uploaded.ref);
 
-		const colref = collection(db, "pics");
 		await addDoc(colref, {
 			timestamp: ts,
 			caption: values.caption,
 			pic: downloadUrl,
 			views: 0,
 		});
+		route.push("/gallery");
 	};
 	const { errors } = formState;
 
