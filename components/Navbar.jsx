@@ -68,7 +68,7 @@ export default function Nav() {
 				</ul>
 			</div>
 			{showMenu && (
-				<div className='absolute z-10 left-1 right-1 py-2 mx-auto bg-black bg-opacity-80 text-white my-2 text-[24px] flex justify-center border-b-2'>
+				<div className='absolute z-10 left-1 right-1 py-2 mx-auto bg-[#0A0A32] bg-opacity-80 text-white my-2 text-[24px] flex justify-center border-b-2'>
 					<div className='flex flex-col gap-5'>
 						<Link href='/'>
 							<button
