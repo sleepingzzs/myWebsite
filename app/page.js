@@ -122,12 +122,11 @@ export default function Home() {
 					</h1>
 					<div className='leading-8 flex flex-col gap-2'>
 						<p>
-							I'm a {age} year old who hates academics but a
-							sucker for Computer Science. I've been making
-							personal websites and bots as a small hobby for a
-							few years. Besides the techie stuff, I mostly spend
-							my hours in various games, music, anime, webtoons,
-							etc.
+							I'm your average {age} year old chronically online
+							geek who never leaves his computer screen. Science
+							fascinates me and technology excites me! Besides
+							being a cool tech-bro, I spend my hours in various
+							video games, music, anime, webtoons, etc.
 						</p>
 						<p>I use linux BTW-</p>
 					</div>

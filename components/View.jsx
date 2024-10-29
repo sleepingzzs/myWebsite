@@ -23,11 +23,10 @@ export default function View({ pic }) {
 		router.push("/gallery");
 	};
 	return (
-		// <div className='absolute z-100 flex justify-center left-0 right-0 mx-auto bg-opacity-50  bg-white max-w-5xl'>
-		<div className='absolute z-100 flex justify-center h-[100%] top-0 left-0 right-0 mx-auto backdrop-blur-sm  overflow-y-hidden'>
+		<div className='absolute z-100 flex justify-center h-[100%] top-0 left-0 right-0 mx-auto backdrop-blur-sm overflow-y-hidden'>
 			<div className='relative m-auto'>
 				<Image
-					className='rounded-md object-cover w-[500px] ms:w-'
+					className='rounded-md object-cover w-[500px]'
 					width={1000}
 					height={1000}
 					src={pic}
